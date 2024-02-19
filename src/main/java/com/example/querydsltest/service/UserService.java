@@ -1,5 +1,6 @@
 package com.example.querydsltest.service;
 
+import com.example.querydsltest.builder.ConditionalBuilder;
 import com.example.querydsltest.builder.WhereClauseBuilder;
 import com.example.querydsltest.dto.ConditionalsDto;
 import com.example.querydsltest.entity.User;
@@ -16,15 +17,14 @@ public class UserService {
 
     public User createConditional(ConditionalsDto dto) {
         WhereClauseBuilder builder = new WhereClauseBuilder();
-
-//        for (ConditionalsDto.ConditionalDto conditional : dto.getConditionals()) {
-//            builder.and(
-//                    ConditionalBuilder
-//                            .mapOfConditional.get(conditional.getColumn())
-//                            .get(conditional.getOperation())
-//                            .apply(conditional.getValue())
-//            );
-//        }
+        for (ConditionalsDto.ConditionalDto conditional : dto.getConditionals()) {
+            builder.and(
+                    ConditionalBuilder
+                            .mapOfConditional.get(conditional.getColumn())
+                            .get(conditional.getOperation())
+                            .apply(conditional.getValue())
+            );
+        }
         return userRepository.findOne(builder).orElse(null);
     }
 }
