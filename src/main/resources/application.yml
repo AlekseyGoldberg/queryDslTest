@@ -1,0 +1,32 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        default_schema: t_status
+  #        format_sql: true
+  #        show_sql: true
+
+#  kafka:
+#    bootstrap-servers: localhost:29092
+#    consumer:
+#      group-id: my-test-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+#    dbcp2:
+#      default-schema: t_status
+#    currentSchema: t_status
+
+logging:
+  level:
+    root: INFO
